@@ -1,0 +1,29 @@
+{
+
+  "users": [
+     {
+       "id": 1,
+       "username": "John",
+       "full_name" : "John Mayer",
+       "address" : "US"
+     },
+     {
+       "id": 2,
+       "username": "Mark",
+       "full_name" : "Mark Mayer",
+       "address" : "US"
+     },
+     {
+       "id": 3,
+       "username": "Joquine",
+       "full_name" : "Joquine Mayer",
+       "address" : "US"
+     },
+     {
+       "id": 4,
+       "username": "Messi",
+       "full_name" : "Messi Mayer",
+       "address" : "US"
+     }
+  ]
+}
