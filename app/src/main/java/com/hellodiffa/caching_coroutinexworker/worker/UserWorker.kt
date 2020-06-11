@@ -18,6 +18,7 @@ class UserWorker(context: Context, params: WorkerParameters) : CoroutineWorker(c
         } catch (e: HttpException) {
             Result.retry()
         }
+
     }
 
 }
