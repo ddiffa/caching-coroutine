@@ -22,8 +22,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private var _users = MutableLiveData<List<User>>()
     val users: LiveData<List<User>> get() = _users
 
-    private val _message = MutableLiveData<String>()
-    val message : LiveData<String> get() = _message
+    private val _loading = MutableLiveData<Boolean>()
+    val loading : LiveData<Boolean> get() = _loading
 
     private var job = Job()
     private val scope = CoroutineScope(job + Dispatchers.Main)
@@ -32,15 +32,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         repository = UserRepository(userDao)
 
         scope.launch {
-            _message.value = "Loading..."
+            _loading.postValue(true)
             delay(1_500)
-            try{
-                repository.refreshUsers()
-            }catch (e: Throwable){
-                _message.value = e.message
-            }
+            repository.refreshUsers()
             _users.postValue(repository.getAllUser())
-            _message.value = "Success"
+            _loading.postValue(false)
         }
     }
 

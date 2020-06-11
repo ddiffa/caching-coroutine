@@ -38,12 +38,12 @@ class MainFragment : Fragment() {
         binding.rvUser.adapter = adapter
 
         viewModel.users.observe(viewLifecycleOwner, Observer {
-            Log.e("app", it[0].toString())
             adapter.setDataSource(it)
         })
 
-        viewModel.message.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+        viewModel.loading.observe(viewLifecycleOwner, Observer {
+            if (it) binding.progressCircular.visibility = View.VISIBLE
+            else binding.progressCircular.visibility = View.GONE
         })
     }
 
